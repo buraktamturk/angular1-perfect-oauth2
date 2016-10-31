@@ -39,12 +39,15 @@
 
     that.access_token = data.access_token;
     that.id_token = data.id_token;
-    that.refresh_token = data.refresh_token;
+
+    if(data.refresh_token) {
+      that.refresh_token = data.refresh_token;
+      localStorage.setItem(that.name+'_refresh_token', that.refresh_token);
+    }
 
     localStorage.setItem(that.name+'_access_token', that.access_token);
     localStorage.setItem(that.name+'_id_token', that.id_token);
-    localStorage.setItem(that.name+'_refresh_token', that.refresh_token);
-
+    
     that.config.onToken && that.config.onToken(that.refresh_token, that.access_token);
   };
 
@@ -193,11 +196,6 @@
                 return module
                   .$exchange($stateParams.code);
               });
-            })
-            .then(function(data) {
-              if(data) {
-                console.log('tamam tamam tamam');
-              }
             });
         }
 

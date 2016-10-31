@@ -1,6 +1,6 @@
 {
   "name": "angular1-perfect-oauth2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple OAuth2 client for Angular v1.x with token refreshing mechanism",
   "main": "index.js",
   "scripts": {
