@@ -23,9 +23,9 @@
   oauth2.prototype.$logout = function() {
     var that = this;
 
-    localStorage.removeItem(name+'_access_token');
-    localStorage.removeItem(name+'_id_token');
-    localStorage.removeItem(name+'_refresh_token');
+    localStorage.removeItem(that.name+'_access_token');
+    localStorage.removeItem(that.name+'_id_token');
+    localStorage.removeItem(that.name+'_refresh_token');
 
     that.access_token = null;
     that.id_token = null;
@@ -47,7 +47,7 @@
 
     localStorage.setItem(that.name+'_access_token', that.access_token);
     localStorage.setItem(that.name+'_id_token', that.id_token);
-    
+
     that.config.onToken && that.config.onToken(that.refresh_token, that.access_token);
   };
 
