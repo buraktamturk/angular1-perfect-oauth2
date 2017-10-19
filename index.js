@@ -129,13 +129,17 @@
     return url + (url.indexOf('?') >= 0 ? "&" : '?') + encodeURIComponent(key) + "=" + encodeURIComponent(value);
   }
 
-  oauth2.prototype.$go_authenticate = function() {
+  oauth2.prototype.$go_authenticate_url = function(redirect_uri) {
     var qs = appendQs(this.config.authorization_url, 'client_id', this.config.client_id);
-    qs = appendQs(qs, 'redirect_uri', this.$state.href('_oauth2_exchange', {id: this.name}, {absolute: true}));
+    qs = appendQs(qs, 'redirect_uri', redirect_uri || this.$state.href('_oauth2_exchange', {id: this.name}, {absolute: true}));
     qs = appendQs(qs, 'response_type', 'code');
     if(this.config.scope) qs = appendQs(qs, 'scope', this.config.scope);
 
-    window.location.href = qs;
+    return qs;
+  };
+
+  oauth2.prototype.$go_authenticate = function(redirect_uri) {
+    window.location.href = this.$go_authenticate_url(redirect_uri);
   };
 
   function extend(obj1, obj2) {
@@ -231,5 +235,10 @@
   return angular
     .module('perfect.oauth2', [uiRouter])
     .provider('oauth2', ['$stateProvider', oauth2Provider])
+    .factory('oauth2Factory', ['$state', '$http', function($state, $http) {
+      return function(name_or_config,config) {
+        return new oauth2($state, $http, name_or_config.name || name_or_config, (name_or_config.name && name_or_config) || config);
+      };
+    }])
     .name;
 });
