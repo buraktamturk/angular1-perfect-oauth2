@@ -155,7 +155,7 @@
     var that = this;
 
     function try_http() {
-      return that._$http(extend(config, {
+      return that._$http(angular.merge({}, config, {
         url: config.path ? (that.config.base_url || (config.endpoint && that.config.endpoints && that.config.endpoints[config.endpoint])) + '/' + config.path : config.url,
         headers: extend(config.headers || {}, {
           'Authorization': 'Bearer ' + that.access_token
