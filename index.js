@@ -233,7 +233,7 @@
   }];
 
   return angular
-    .module('perfect.oauth2', [uiRouter])
+    .module('perfect.oauth2', [uiRouter.default])
     .provider('oauth2', ['$stateProvider', oauth2Provider])
     .factory('oauth2Factory', ['$state', '$http', function($state, $http) {
       return function(name_or_config,config) {
