@@ -1,6 +1,6 @@
 (function(root, factory) {
   if(typeof define === 'function' && define.amd) {
-    define(['angular', 'ui.router'], factory);
+    define(['angular', '@uirouter/angularjs'], factory);
   } else if(typeof exports === 'object') {
     module.exports = factory(require('angular'), require('@uirouter/angularjs'));
   } else {
