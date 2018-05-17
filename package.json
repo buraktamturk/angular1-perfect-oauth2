@@ -1,6 +1,6 @@
 {
   "name": "angular1-perfect-oauth2",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "simple OAuth2 client for Angular v1.x with token refreshing mechanism",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,6 @@
   "homepage": "https://github.com/buraktamturk/angular1-perfect-oauth2#readme",
   "peerDependencies": {
     "angular": "1.x",
-    "angular-ui-router": "0.x"
+    "@uirouter/angularjs": "^1.0.17"
   }
 }

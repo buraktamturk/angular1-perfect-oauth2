@@ -1,8 +1,8 @@
 (function(root, factory) {
   if(typeof define === 'function' && define.amd) {
-    define(['angular', 'angular-ui-router'], factory);
+    define(['angular', 'ui.router'], factory);
   } else if(typeof exports === 'object') {
-    module.exports = factory(require('angular'), require('angular-ui-router'));
+    module.exports = factory(require('angular'), require('@uirouter/angularjs'));
   } else {
     factory(root.angular, 'ui.router');
   }
