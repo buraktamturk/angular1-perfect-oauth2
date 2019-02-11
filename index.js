@@ -168,8 +168,8 @@
             .then(function() {
               return try_http();
             }, function(error1) {
-              console.errro('Error renewing access_token: ', error1);
-              return Promise.reject(error);
+              console.error('Error renewing access_token: ', error1);
+              return Promise.reject(error1);
             });
         }
 
